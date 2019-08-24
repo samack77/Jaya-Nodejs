@@ -88,3 +88,4 @@ typings/
 .dynamodb/
 
 public/assets/log.txt
+public/assets/sorted.txt

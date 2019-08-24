@@ -41,30 +41,26 @@ let writeSortedFile = (arr) => {
   });
 } 
 
-let readOriginalFile = (nsort) => {
+let readOriginalFile = (nsort, mix = false) => {
   if(typeof nsort !== "function"){
     console.log("Please, You must to give a function to sort the arrays");
     return;
   }
   let narray = [];
+  let i = 1;
   lineReader.eachLine('public/assets/original.txt', function(line, last) {
     let arr = JSON.parse(line.replace(";", ""));
-    const sortedArr = arr.sort(nsort);
+
+    let sortedArr = arr.sort(nsort);
+    if(mix && i % 2 === 0){
+      sortedArr.reverse();
+    }
     narray.push(sortedArr);
+    i++;
     if(last){
       writeSortedFile(narray);
     }
-  });  
-}
-
-let desc = (a, b) => {
-  if(b < a){
-    return -1;
-  }
-  if(b > a){
-    return 1;
-  }
-  return 0;
+  });
 }
 
 router.get('/asc', logMiddleware.storeLog, function(req, res, next){
@@ -82,6 +78,7 @@ router.get('/des', logMiddleware.storeLog, function(req, res, next){
 });
 
 router.get('/mix', logMiddleware.storeLog, function(req, res, next){
+  readOriginalFile((a, b) => a-b, true);
   return res
     .status(200)
     .send({message: "OK"});
