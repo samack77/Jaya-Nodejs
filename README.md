@@ -1,4 +1,4 @@
-# Basic-Token-Auth
+# Jaya-Nodejs
 NodeJS project to authenticate users by token, using jwt, Mongoose, crypto, Express; 
 
 # Endpoints
