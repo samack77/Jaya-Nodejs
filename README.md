@@ -1,5 +1,5 @@
 # Basic-Token-Auth
-NodeJS project to authenticate users by token, using jwt, Mongoose, crypto, Express; You can see also how to upload files to AWS S3.
+NodeJS project to authenticate users by token, using jwt, Mongoose, crypto, Express; 
 
 # Endpoints
 
@@ -7,9 +7,7 @@ NodeJS project to authenticate users by token, using jwt, Mongoose, crypto, Expr
 
 **/auth/sign-in** => Public, endpoint to login into the APP
 
-**/users/me** => Private, to get info by current user, you need a token
-
-**/upload** => Public to upload files on test mode
+**/me** => Private, to get info by current user, you need a token
 
 **/** => Public endpoint to test API
 
@@ -21,3 +19,7 @@ To test this, you'll need a token you get on Sing up or Sing in methods. You mig
 Authorization: Bearer yourLongTokenHere
 
 **This app run on port 3000**
+
+# How to run app
+
+> TOKEN_SECRET=your_token_here npm start
