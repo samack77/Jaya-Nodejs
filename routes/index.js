@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const authMiddleware = require('../middlewares/auth');
+const logMiddleware = require('../middlewares/sort_log');
 const User = mongoose.model('User');
 
 /* GET home page. */
@@ -27,5 +28,12 @@ router.get('/me', authMiddleware.ensureAuthenticated, function(req, res, next) {
 					.send({message: "User not found"});
 	});  
 });
+
+router.get('/asc', logMiddleware.storeLog, function(req, res, next){
+  return res
+    .status(200)
+    .send({message: "OK"});
+});
+
 
 module.exports = router;
