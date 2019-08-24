@@ -23,3 +23,7 @@ Authorization: Bearer yourLongTokenHere
 # How to run app
 
 > TOKEN_SECRET=your_token_here npm start
+
+Please do not forget run this command to install npm dependencies:
+
+> npm i
